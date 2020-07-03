@@ -1,0 +1,15 @@
+Project Name: Alarm Clock
+By-Kunjesh and Shivesh
+
+ We use some of the following modules , functions and widgets which are different for what we use regularly in python language.
+The project is based on tkinter module. 
+1. Winsound-This is the module used for generating or playing sound or a sound file.This can be used to create sound like (beep...). 
+This winsound module  is defined only for execution on a Windows Platform, hence the name WINsound.  syntax winsound.Beep(frequency,duration).
+2. .after()-This method is used to call the given function after a given delay in ms. The syntax is given below..
+    ".after(delay , function)"
+3. .isdigit() -
+      This function is used to check if the digit is entered in input.  If we enter a digit in input then the program proceeds or else the error message wil be shown.
+Syntax : “(the thing you want to check).isdigit()”
+4.  .entry -word
+      entry widget is used to store single line text strings or any value.
+   It will store them and use them in further code.
