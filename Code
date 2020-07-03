@@ -1,0 +1,80 @@
+import tkinter
+import winsound
+import time
+import math
+
+timer=False
+def countdown(count): 
+   if(timer): 
+    seconds=math.floor(count%60)
+    minutes=math.floor((count/60)%60)
+    hours=math.floor((count/3600))
+    label['text'] ="Hours: "+ str(hours)+ " Minutes:  " +str(minutes)+ " Seconds: " +str(seconds)
+    H.set(hours)
+    m.set(minutes)
+    s.set(seconds)
+    if count >= 0:
+        top.after(1000, countdown,count-1)
+    else:
+        for x in range(3):
+         winsound.Beep(1000,1000)
+        label['text']="Time is up!"
+        H.set('')
+        m.set('')
+        s.set('')
+    
+        
+        
+def start():   
+    
+    global timer
+    timer=True
+    hour,minute,sec=hoursE.get(),minuteE.get(),secondE.get()
+    if hour.isdigit() and minute.isdigit() and sec.isdigit():
+        time=int(hour)*3600+int(minute)*60+int(sec)
+        countdown(time)
+
+def reset():
+    global timer
+    timer=False
+    H.set('')
+    m.set('')
+    s.set('')
+    label['text']=" "
+def stop():
+    global timer
+    timer=False
+
+
+top = tkinter.Tk()
+top.title("Alarm Clock")
+top.configure(bg="light blue")
+H=tkinter.StringVar()
+m=tkinter.StringVar()
+s=tkinter.StringVar()
+top.geometry("500x400")
+hoursT=tkinter.Label(top, text="Hours:")
+hoursE=tkinter.Entry(top,textvariable=H)
+minuteT=tkinter.Label(top, text="Minutes:")
+minuteE=tkinter.Entry(top,textvariable=m)
+secondT=tkinter.Label(top, text="Seconds:")
+secondE=tkinter.Entry(top,textvariable=s)
+hoursT.grid(row=1,column=1)
+hoursE.grid(row=1,column=2)
+minuteT.grid(row=2,column=1)
+minuteE.grid(row=2,column=2)
+secondT.grid(row=3,column=1)
+secondE.grid(row=3,column=2)
+
+label = tkinter.Label(top,bg="light blue")
+label.grid(row=5,column=2)
+
+start=tkinter.Button(top,text="Start Timer",command=start)
+start.grid(row=6,column=2)
+reset=tkinter.Button(top,text="Reset",command=reset)
+reset.grid(row=6,column=1)
+stop=tkinter.Button(top,text="Stop Timer",command=stop)
+stop.grid(row=6,column=3)
+top.iconbitmap(r'C:\Users\hp\Desktop\kunj\ok.ico') 
+
+top.mainloop()
